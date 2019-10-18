@@ -1,0 +1,5 @@
+USER STORIES
+
+•As a registered user, I want to write my recipes in a cookbook so that are organized, and I can prepare them whenever I want.
+•As a registered user, I want to save a list of the available ingredients in my food storage, so I can consult when I need it.
+•As admin, I want to check recipes written by registered user, so I can approve them.
