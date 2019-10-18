@@ -1,0 +1,5 @@
+FUNCTIONAL REQUIREMENTS
+
+•The system shall provide user’s recipes in the specific section.
+•The system shall provide a list of available ingredients for a registered user.
+•The system shall provide to the admin the possibility to check recipes written by registered users.
