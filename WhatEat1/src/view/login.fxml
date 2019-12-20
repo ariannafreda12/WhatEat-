@@ -11,26 +11,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Login">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Login">
    <children>
-      <ImageView fitHeight="768.0" fitWidth="1024.0">
+      <ImageView fitHeight="600.0" fitWidth="800.0">
          <image>
             <Image url="@../img/1.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="userField" layoutX="579.0" layoutY="192.0" prefHeight="35.0" prefWidth="370.0">
+      <TextField fx:id="userField" layoutX="454.0" layoutY="146.0" prefHeight="32.0" prefWidth="288.0">
          <font>
-            <Font name="System Italic" size="18.0" />
+            <Font name="System Italic" size="14.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="passField" layoutX="579.0" layoutY="293.0" prefHeight="35.0" prefWidth="370.0">
+      <PasswordField fx:id="passField" layoutX="454.0" layoutY="226.0" prefHeight="32.0" prefWidth="288.0">
          <font>
-            <Font name="System Italic" size="18.0" />
+            <Font name="System Italic" size="14.0" />
          </font>
       </PasswordField>
-      <Button fx:id="btnLogin" layoutX="729.0" layoutY="359.0" mnemonicParsing="false" onAction="#LoginMethod" text="Login" AnchorPane.topAnchor="359.0">
+      <Button fx:id="btnLogin" layoutX="565.0" layoutY="276.0" mnemonicParsing="false" onAction="#LoginMethod" prefHeight="38.0" prefWidth="91.0" text="Login" AnchorPane.topAnchor="276.0">
          <font>
-            <Font name="System Bold Italic" size="24.0" />
+            <Font name="System Bold Italic" size="22.0" />
          </font>
          <effect>
             <DropShadow blurType="ONE_PASS_BOX" height="6.17" radius="2.585" width="6.17" />
@@ -39,29 +39,29 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnLoginFb" layoutX="655.0" layoutY="456.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="243.0">
+      <Button fx:id="btnLoginFb" layoutX="503.0" layoutY="354.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="44.0" prefWidth="214.0">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="48.0" fitWidth="243.0">
+            <ImageView fitHeight="44.0" fitWidth="214.0">
                <image>
                   <Image url="@../img/images%20(1).jpg" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Text fx:id="forgotPassText" layoutX="678.0" layoutY="548.0" onMouseClicked="#forgotPassword" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password?" underline="true">
+      <Text fx:id="forgotPassText" layoutX="512.0" layoutY="435.0" onMouseClicked="#forgotPassword" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password?" underline="true">
          <font>
-            <Font name="System Bold Italic" size="24.0" />
+            <Font name="System Bold Italic" size="22.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Text>
-      <Button fx:id="btnVisitor" layoutX="655.0" layoutY="574.0" mnemonicParsing="false" onAction="#visitorMethod" text="Continue as visitor">
+      <Button fx:id="btnVisitor" layoutX="491.0" layoutY="458.0" mnemonicParsing="false" onAction="#visitorMethod" text="Continue as visitor">
          <font>
-            <Font name="System Bold Italic" size="24.0" />
+            <Font name="System Bold Italic" size="22.0" />
          </font>
          <effect>
             <DropShadow blurType="ONE_PASS_BOX" height="6.17" radius="2.585" width="6.17" />
@@ -70,32 +70,32 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text fx:id="registrationText" accessibleRole="BUTTON" layoutX="764.0" layoutY="683.0" onMouseClicked="#goToRegistrationPage" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Create account" underline="true">
+      <Text fx:id="registrationText" accessibleRole="BUTTON" layoutX="584.0" layoutY="545.0" onMouseClicked="#goToRegistrationPage" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Create account" underline="true">
          <font>
-            <Font name="System Bold Italic" size="24.0" />
+            <Font name="System Bold Italic" size="22.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Text>
-      <Text fx:id="homeText" fill="WHITE" layoutX="257.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
+      <Text fx:id="homeText" fill="WHITE" layoutX="190.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
          <font>
-            <Font name="System Bold Italic" size="24.0" />
+            <Font name="System Bold Italic" size="22.0" />
          </font>
       </Text>
-      <Text fx:id="regText" layoutX="347.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration">
+      <Text fx:id="regText" layoutX="267.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration">
          <font>
-            <Font name="System Bold Italic" size="24.0" />
+            <Font name="System Bold Italic" size="22.0" />
          </font>
       </Text>
-      <Text fx:id="recipesText" layoutX="507.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipes">
+      <Text fx:id="recipesText" layoutX="415.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipes">
          <font>
-            <Font name="System Bold Italic" size="24.0" />
+            <Font name="System Bold Italic" size="22.0" />
          </font>
       </Text>
-      <Text layoutX="625.0" layoutY="682.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No account?">
+      <Text layoutX="454.0" layoutY="545.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No account?">
          <font>
-            <Font name="System Bold Italic" size="24.0" />
+            <Font name="System Bold Italic" size="22.0" />
          </font>
       </Text>
    </children>

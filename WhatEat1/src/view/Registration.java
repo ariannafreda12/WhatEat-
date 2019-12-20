@@ -16,18 +16,23 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Registration {
-	
+	@FXML
 	public Button createAccount;
-	
+	@FXML
 	public TextField usernameField;
-	
+	@FXML
 	public TextField emailField;
-	
+	@FXML
 	public PasswordField passwordField;
+	@FXML
+	public Text goToLogin1;
 	
+	
+	//Metodo per creare un nuovo account
 	public void createAccount(ActionEvent actionEvent) throws Exception {
 		
         String username = usernameField.getText();
@@ -50,12 +55,11 @@ public class Registration {
 			alert.setContentText("Username and password must be \nat least six characters");
 			alert.showAndWait();
         }
-        else {
-            DBManager dbManager = new DBManager();
-            if (dbManager.register(username, password, email)){
+            if (DBManager.register(username, password, email)){
                 GraphicController graphicController = new GraphicController();
                 ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
                 graphicController.start(null);
+                //ti rimanda alla pagina di login per effettuare l'accesso con il nuov account
                 Alert alert = new Alert(AlertType.CONFIRMATION);
     			alert.setTitle("Success");
     			alert.setHeaderText("Success!");
@@ -72,10 +76,10 @@ public class Registration {
                 
             }
         }
-	}
+	
   
 	
-	
+	//per tornare alla pagina di login
 	public void goToLogin(MouseEvent mouseEvent) throws Exception{
 		
 		((Node)(mouseEvent.getSource())).getScene().getWindow().hide();
@@ -93,7 +97,7 @@ public class Registration {
 		regStage.getIcons().add(new Image("img/icon.png"));
         regStage.setTitle("WhatEat?!" );
         regStage.setResizable(false);
-        Scene scene = new Scene(root, 1024, 768);
+        Scene scene = new Scene(root, 800, 600);
         regStage.setScene(scene);
         regStage.show();
 	}

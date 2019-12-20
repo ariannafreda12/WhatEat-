@@ -6,6 +6,7 @@ import controller.GraphicController;
 import exception.EmptyFieldexception;
 import exception.UsernameNotFoundException;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -16,15 +17,24 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
 public class Login {
-	
-	    public Button btnLogin, btnVisitor;
+		@FXML
+	    public Button btnLogin;
+		@FXML
+		public Button btnVisitor;
+		@FXML
 	    public PasswordField passField;
+		@FXML
 	    public TextField userField;
-	    
+		@FXML
+		public Text registrationText;
+		
+		
+	    //Metodo per il login
 	    public void LoginMethod(ActionEvent actionEvent) throws Exception {
 	    	
 	    	String user = userField.getText();
@@ -49,6 +59,7 @@ public class Login {
 		            else {
 		            	throw new UsernameNotFoundException();
 		            }
+		            
 			}catch(EmptyFieldexception e) {
 				
 				Alert alert = new Alert(AlertType.WARNING);
@@ -56,6 +67,7 @@ public class Login {
 				alert.setHeaderText("Attention!");
 				alert.setContentText("To log in, enter your username and password.");
 				alert.showAndWait();
+				
 			} catch(UsernameNotFoundException e) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error");
@@ -96,7 +108,7 @@ public class Login {
 		loginStage.getIcons().add(new Image("img/icon.png"));
         loginStage.setTitle("WhatEat?!" );
         loginStage.setResizable(false);
-        Scene scene = new Scene(root, 1024, 768);
+        Scene scene = new Scene(root, 800, 600);
         loginStage.setScene(scene);
         loginStage.show();
 		
