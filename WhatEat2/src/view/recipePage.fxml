@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Login">
+   <children>
+      <ImageView fitHeight="768.0" fitWidth="1024.0">
+         <image>
+            <Image url="@../img/9.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="713.0" fitWidth="1066.0" layoutX="-41.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/sfondo%20ricetta.jpg" />
+         </image>
+      </ImageView>
+      <Text fx:id="homeText" fill="#030303" layoutX="257.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="regText" layoutX="347.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="recipesText" fill="WHITE" layoutX="507.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipes">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="profileText" layoutX="617.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MyProfile">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="88.0" layoutY="108.0" prefHeight="637.0" prefWidth="892.0">
+         <children>
+            <VBox layoutX="-3.0" layoutY="-14.0" prefHeight="650.0" prefWidth="895.0">
+               <children>
+                  <Label id="LabelTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="66.0" prefWidth="904.0">
+                     <font>
+                        <Font name="System Bold Italic" size="50.0" />
+                     </font>
+                     <padding>
+                        <Insets left="30.0" top="10.0" />
+                     </padding>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <effect>
+                        <ColorAdjust />
+                     </effect>
+                  </Label>
+                  <GridPane prefHeight="521.0" prefWidth="905.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="437.6666564941406" minWidth="10.0" prefWidth="379.3333435058594" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="361.3333435058594" minWidth="2.333343505859375" prefWidth="15.666656494140625" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="537.6666870117188" minWidth="10.0" prefWidth="524.6666870117188" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="350.0" prefHeight="350.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label alignment="TOP_RIGHT" prefHeight="54.0" prefWidth="355.0" text="Difficulty:" textAlignment="RIGHT">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </Label>
+                        <HBox prefHeight="51.0" prefWidth="76.0" GridPane.columnIndex="1" />
+                        <Label alignment="TOP_RIGHT" prefHeight="54.0" prefWidth="355.0" text="Preparing time:" textAlignment="RIGHT" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="TOP_RIGHT" prefHeight="54.0" prefWidth="355.0" text="Category:" textAlignment="RIGHT" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="350.0" prefWidth="382.0" vbarPolicy="ALWAYS" GridPane.rowIndex="5">
+                           <content>
+                              <VBox prefHeight="290.0" prefWidth="363.0">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="54.0" prefWidth="411.0" text="Ingredients" textAlignment="RIGHT">
+                                       <font>
+                                          <Font name="System Bold Italic" size="30.0" />
+                                       </font>
+                                    </Label>
+                                    <Label id="LabelIngredients" alignment="CENTER" prefHeight="54.0" prefWidth="411.0" textAlignment="RIGHT">
+                                       <font>
+                                          <Font name="System Bold Italic" size="24.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="15.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </ScrollPane>
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                           <content>
+                              <VBox prefHeight="297.0" prefWidth="510.0">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="54.0" prefWidth="491.0" text="Preparation" textAlignment="RIGHT">
+                                       <font>
+                                          <Font name="System Bold Italic" size="30.0" />
+                                       </font>
+                                    </Label>
+                                    <Label id="LabelPreparation" alignment="TOP_LEFT" prefHeight="54.0" prefWidth="497.0" textAlignment="RIGHT">
+                                       <font>
+                                          <Font name="System Bold Italic" size="24.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="7" />
+                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                           <children>
+                              <Label alignment="TOP_RIGHT" prefHeight="42.0" prefWidth="194.0" text="Save to favourite" textAlignment="RIGHT" underline="true">
+                                 <font>
+                                    <Font name="System Bold Italic" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="43.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/add_to_favourite-512.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                           <children>
+                              <Label alignment="TOP_LEFT" prefHeight="36.0" prefWidth="207.0" text="Leave a review: " textAlignment="RIGHT">
+                                 <font>
+                                    <Font name="System Bold Italic" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label id="LabelDifficulty" alignment="TOP_LEFT" prefHeight="45.0" prefWidth="516.0" textAlignment="RIGHT" GridPane.columnIndex="2">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label id="LabelTime" alignment="TOP_LEFT" prefHeight="45.0" prefWidth="516.0" textAlignment="RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label id="LabelCategory" alignment="TOP_LEFT" prefHeight="45.0" prefWidth="516.0" textAlignment="RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold Italic" size="30.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </GridPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
