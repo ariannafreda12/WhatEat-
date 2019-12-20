@@ -35,6 +35,9 @@
          <effect>
             <DropShadow blurType="ONE_PASS_BOX" height="6.17" radius="2.585" width="6.17" />
          </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Button fx:id="btnLoginFb" layoutX="655.0" layoutY="456.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="48.0" prefWidth="243.0">
          <font>
@@ -63,8 +66,11 @@
          <effect>
             <DropShadow blurType="ONE_PASS_BOX" height="6.17" radius="2.585" width="6.17" />
          </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Text fx:id="registrationText" accessibleRole="BUTTON" layoutX="620.0" layoutY="686.0" onMouseClicked="#goToRegistrationPage" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="No account? Create account" underline="true">
+      <Text fx:id="registrationText" accessibleRole="BUTTON" layoutX="764.0" layoutY="683.0" onMouseClicked="#goToRegistrationPage" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Create account" underline="true">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
@@ -83,6 +89,11 @@
          </font>
       </Text>
       <Text fx:id="recipesText" layoutX="507.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipes">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="625.0" layoutY="682.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No account?">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>

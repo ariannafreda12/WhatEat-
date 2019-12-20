@@ -40,6 +40,13 @@ public class User {
 			this.email= email;
 			
 		}
+
+		public void reset() {
+		        this.setEmail(null);
+		        this.setPassword(null);
+		        this.setUsername(null);
+			
+		}
 	}
 	 
 

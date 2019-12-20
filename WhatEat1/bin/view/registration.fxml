@@ -33,8 +33,11 @@
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Text fx:id="goToLogin" accessibleRole="TEXT" layoutX="356.0" layoutY="570.0" onMouseClicked="#goToLogin" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account? Login" underline="true">
+      <Text fx:id="goToLogin" accessibleRole="TEXT" layoutX="642.0" layoutY="573.0" onMouseClicked="#goToLogin" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" underline="true">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
@@ -42,10 +45,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Text>
-      <Text fx:id="goToHome" accessibleRole="BUTTON" layoutX="257.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" underline="true">
+      <Text fx:id="goToHome" accessibleRole="BUTTON" layoutX="257.0" layoutY="40.0" onMouseClicked="#goToLogin" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" underline="true">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Text>
       <Text fill="WHITE" layoutX="347.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration">
          <font>
@@ -56,6 +62,14 @@
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
+      </Text>
+      <Text fx:id="goToLogin1" accessibleRole="TEXT" layoutX="352.0" layoutY="574.0" onMouseClicked="#goToLogin" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
       </Text>
    </children>
 </AnchorPane>

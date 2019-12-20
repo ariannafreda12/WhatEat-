@@ -5,7 +5,8 @@ import model.User;
 
 
 public class DBManager {
-	private static DBManager instance = null; //singleton
+	private static DBManager instance = null;
+	private User user;//singleton
 
     public DBManager() {}
 
@@ -16,7 +17,14 @@ public class DBManager {
         }
         return instance;
     }
+    
+    public User getUser() {
+        return user;
+     }
 
+     public void setUser(User u){
+        user = u;
+     }
 
 public User login(String username, String password) {
 	return UserDao.loginDao(username, password);
@@ -24,6 +32,8 @@ public User login(String username, String password) {
 
 public static boolean register(String username, String password, String email) {
 	return UserDao.registrationDao(username, password, email);
+
+	
 }
 
 }
