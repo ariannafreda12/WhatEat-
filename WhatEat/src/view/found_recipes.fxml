@@ -7,13 +7,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
    <children>
       <AnchorPane minHeight="1024.0" prefWidth="768.0">
          <children>
             <ImageView fitHeight="768.0" fitWidth="1024.0" layoutY="1.0">
                <image>
-                  <Image url="@img/6.jpg" />
+                  <Image url="@../img/6.jpg" />
                </image>
             </ImageView>
             <Text fx:id="homeText" layoutX="257.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" underline="true">

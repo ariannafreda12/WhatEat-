@@ -2,117 +2,100 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-
-import exception.UsernameNotFoundException;
 import model.User;
-import model.UserStatus;
+import utils.Query;
+
 
 public class UserDao {
 	
 	
-	 private static final String URL = "jdbc:postgresql://localhost:5432/WhatEat";
+	 private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
 	 private static final String USER = "postgres";
 	 private static final String PASS = "postgres";
 	 private final static String DRIVER_CLASS_NAME = "org.postgresql.Driver";
 	  private static Connection connection = null;
 	
-	  public User login(String username, String password) {
+	  public static User loginDao(String username, String password) {
 		 
-				Statement stmt = null;
-				User u = null;
-				try {
-					Class.forName(DRIVER_CLASS_NAME);
-					connection = DriverManager.getConnection(URL, USER, PASS);
-					stmt = connection.createStatement();
-					String sql = "SELECT * from user where "
-							+ "username = '" + username + "' and password = '" + password + "'";
-					ResultSet rs = stmt.executeQuery(sql);
-					if(rs.next()) {
-						u = new User(username, password);
-					}
-				} catch(Exception e) {
-					e.printStackTrace();
-				} finally {
-					try {
-						if(connection != null)
-							connection.close();
-						if(stmt != null)
-							stmt.close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
+		  Statement stmt = null;
+		  User u = null;
+			try {
+				Class.forName(DRIVER_CLASS_NAME);
+				connection = DriverManager.getConnection(URL, USER, PASS);
+				stmt = connection.createStatement();
+				String sql = String.format(Query.loginQuery, username, password);
+				ResultSet rs = stmt.executeQuery(sql);
+				
+				if(rs.next()) {
+					u = new User(username, password, rs.getString("email"));
 				}
-				return u;
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if(connection != null)
+						connection.close();
+					if(stmt != null)
+						stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
-    
-		
-	public boolean changeStatus(String nickname, UserStatus newStatus) {
+			return u;
+		}
+	  
+	  
+	  
+	
+	  public static boolean registrationDao(String username, String password, String email) {
+		  Statement stmt = null;
+	        Connection conn = null;
+	        try {
+	            Class.forName("org.postgresql.Driver");
+	            conn = DriverManager.getConnection(URL, USER, PASS);
+	            stmt = conn.createStatement();
+	            String sql1= String.format(Query.regQuery, username, password, email);
+	            System.out.println("query:\n"+sql1);
+	            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+	            int rs = stmt.executeUpdate(sql1);
 
-        try {
-            connection = DriverManager.getConnection( URL, USER, PASS );
-            String query = "UPDATE user " +
-                    "SET status = ? WHERE username = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement( query );
-            preparedStatement.setString( 1, newStatus.getStatus() );
-            preparedStatement.setString( 2, nickname );
-            int row = preparedStatement.executeUpdate();
+	            if (rs != 1) {
+	                System.out.println("Errore nella Query.");
+	                return false;
+	            }
 
-            if (row != 1) {
-                connection.close();
-                return false;
-            }
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+	            // STEP 6: Clean-up dell'ambiente
+	            stmt.close();
+	            conn.close();
 
-        return true;
-    }
-	public UserStatus getStatus(String nickname) {
+	            System.out.println("Registrazione effettuata con successo");
+	            return true;
 
-        UserStatus us = new UserStatus();
-
-        try {
-            connection = DriverManager.getConnection( URL, USER, PASS );
-
-            String query = "SELECT status FROM userdata WHERE nickname = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement( query );
-            preparedStatement.setString( 1, nickname);
-            ResultSet rs = preparedStatement.executeQuery();
-
-
-            if (rs.next()) {
-
-                String currentStatus = rs.getString( "status" );
-                if (currentStatus.equals( "Attivo" )) {
-                    us.setActive();
-                    return us;
-                } else if (currentStatus.equals( "Inattivo" )) {
-                    us.setInactive();
-                    return us;
-                } else if (currentStatus.equals( "Bannato" )) {
-                    us.setBanned();
-                    return us;
-                }
-                connection.close();
-            } else {
-                connection.close();
-                try {
-                    throw (new UsernameNotFoundException());
-                } catch (UsernameNotFoundException e) {
-                    return us;
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return us;
-    }
+	        } catch (SQLException se) {
+	            // Errore durante l'apertura della connessione
+	            se.printStackTrace();
+	        } catch (Exception e) {
+	            // Errore nel loading del driver
+	            e.printStackTrace();
+	        } finally {
+	            try {
+	                if (stmt != null)
+	                    stmt.close();
+	            } catch (SQLException se2) {
+	                se2.printStackTrace();
+	            }
+	            try {
+	                if (conn != null)
+	                    conn.close();
+	            } catch (SQLException se) {
+	                se.printStackTrace();
+	            }
+	        }
+	        System.out.println("Query fallita");
+	        return false;
+	    }
 
 }
