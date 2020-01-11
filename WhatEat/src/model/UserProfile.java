@@ -1,48 +1,36 @@
 package model;
 
-import java.util.ArrayList;
 
-public class Recipe {
+
+public class UserProfile {
 	
 	public String title;
-	private int id_recipe;
+	
 	public String preparation;
 	public String difficulty;
 	public String category;
-	private String ingredients;
 	public String time;
 	public String necessary;
-	public int review;
-	public ArrayList<String> ingredient;
+	public String username;
 	
-	public Recipe (String title, String preparation, String time,int review) {
+	
+	public UserProfile (String title) {
 		this.title=title;
-		this.preparation = preparation; 
-		this.time = time;
-		this.review=review;
 	}
 	
-	
-	public Recipe(int id_recipe, String title, String preparation, String difficulty, String category,  String time, String necessary,int review) {
+	public UserProfile(String title, String preparation, String difficulty, String category,  String time, String necessary,String username) {
 		
-		this.setId(id_recipe);
+		
 		this.setTitle(title);
 		this.setPreparation(preparation);
 		this.setDifficulty(difficulty);
 		this.setCategory(category);
 		this.setTime(time);
 		this.setNecessary(necessary);
-		this.setReview(review);
+		this.setUsername(username);
 		
 	}
 	
-	public int getId() {
-		return id_recipe;
-	}
-	
-	private void setId(int id_recipe) {
-		this.id_recipe = id_recipe;	
-	}
 
 	public void setTitle(String title) {
 		this.title = title;	
@@ -85,22 +73,7 @@ public class Recipe {
 		return time;
 	}	
 	
-	public String getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(String ingredients) {
-        this.ingredients=ingredients;
-    }
-
-	public ArrayList<String> getIngredient() {
-        return ingredient;
-    }
-    
-     public void setIngredient(ArrayList <String> ingList) {
-    	 this.ingredient = ingList;
-     }
-     
+	
      public void setNecessary(String necessary) {
  		this.necessary = necessary;	
  	}
@@ -108,12 +81,12 @@ public class Recipe {
  	public String getNecessary() {
  		return necessary;
  	}
- 	public int getReview() {
-		return review;
+ 	public String getUsername() {
+		return username;
 	}
 	
-	public void setReview(int review) {
-		this.review = review;	
+	public void setUsername(String username) {
+		this.username = username;	
 	}
-	
+
 }

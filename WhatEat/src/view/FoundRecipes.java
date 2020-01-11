@@ -1,8 +1,7 @@
 package view;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.LinkedHashSet;
 
 import bean.RecipeBean;
 import controller.GraphicController;
@@ -13,7 +12,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -25,8 +23,6 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import model.Recipe;
 
@@ -38,20 +34,26 @@ public class FoundRecipes {
     private static ObservableList<Recipe> list = FXCollections.observableArrayList();
 	
 
-	ArrayList <Recipe> recipe;	
+
 	
 	//instance of recipe manager for get difficulty, category and ingredient list
     RecipeManager rm= RecipeManager.getInstance();
 	Recipe rc=rm.getRecipe();
 	
+	ArrayList <Recipe> recipe= new ArrayList<Recipe>();
+	
 	public ArrayList<Recipe> createList(ArrayList<Recipe> first){
 		
+		int j;
 		for(int l=0; l<first.size(); l++) {
-			for(int j=0; j<first.size(); j++) {
+			for(j=1; j<first.size()-1; j++) {
 				if(first.get(j)==first.get(l)){
 					first.remove(first.get(j));
+					
+					
 				}
 			}
+	
 		}
 		return first;
 	}
@@ -100,7 +102,7 @@ public class FoundRecipes {
         
 		recipe=RecipeManager.foundIngredient(rc.ingredient,rc.category,rc.difficulty); 
 		if (recipe!= null) {
-		//cycle for found recipes
+		
 			
 			ArrayList <Recipe> secondList = createList(recipe);
 					

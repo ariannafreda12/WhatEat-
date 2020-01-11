@@ -8,8 +8,10 @@ import view.FoundRecipes;
 import view.IngredientPage;
 import view.Login;
 import view.MealPage;
+import view.ProfilePage;
 import view.RecipePage;
 import view.Registration;
+import view.UserRecipePage;
 
 
 public class GraphicController extends Application {
@@ -53,6 +55,18 @@ public class GraphicController extends Application {
 	public void showRecipe() throws Exception {
 		RecipePage recPage= new RecipePage();
 		recPage.start();
+	}
+
+	public void profilePage() throws Exception{
+		ProfilePage profPage = new ProfilePage();
+		profPage.start();
+		
+	}
+
+	public void userRecipePage() throws Exception{
+		UserRecipePage userRecPage = new UserRecipePage();
+		userRecPage.start();
+		
 	}
 	
 }

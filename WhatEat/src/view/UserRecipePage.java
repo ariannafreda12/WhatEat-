@@ -1,23 +1,14 @@
 package view;
 
-
-
 import controller.LoginManager;
 import controller.RecipeManager;
-import controller.UserProfileManager;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -25,31 +16,19 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import model.Recipe;
 import model.User;
-import model.UserProfile;
 
-
-public class RecipePage{
-	
-	 
-	public Button likebtn = new Button();
-	
-	public Label reviewLabel = new Label();
+public class UserRecipePage {
 	
 	LoginManager lm = LoginManager.getInstance();
 	User u = lm.getUser();
 	
 	RecipeManager rm= RecipeManager.getInstance();
 	Recipe rc=rm.getRecipe();
-	
-	UserProfileManager upm= UserProfileManager.getInstance();
-	//UserProfile up=new UserProfile(null,null,null,null,null,null,null);
-	UserProfile up=upm.getUserProfile();
-	
 
 	public void start() throws Exception {
-			
+		
 		Stage ingStage = new Stage();
-		FXMLLoader loader = new FXMLLoader (RecipePage.class.getResource("recipePage.fxml"));
+		FXMLLoader loader = new FXMLLoader (RecipePage.class.getResource("userProfilePage.fxml"));
 		AnchorPane root = loader.load();
 		ingStage.getIcons().add(new Image("img/icon.png"));
         ingStage.setTitle("WhatEat?!" );
@@ -65,14 +44,7 @@ public class RecipePage{
         titleLabel.setAlignment(Pos.CENTER);
         titleLabel.setFont(Font.font("System",FontWeight.BOLD, FontPosture.ITALIC, 36));
         
-        reviewLabel.setText("Leave review");
-    	reviewLabel.setLayoutY(551);
-    	reviewLabel.setLayoutX(445);
-    	reviewLabel.setFont(Font.font("System", FontWeight.BOLD, FontPosture.ITALIC, 23));
         
-    	likebtn.setText("Like");
-    	likebtn.setLayoutX(607);
-    	likebtn.setLayoutY(555);
         //create new label for insert difficulty level
         final Label diffLabel = new Label();
         diffLabel.setText(rc.getDifficulty());
@@ -94,9 +66,6 @@ public class RecipePage{
         catLabel.setLayoutX(637);
         catLabel.setFont(Font.font("System", FontPosture.ITALIC, 22));
         
-        
-        
-       
         
         ScrollPane spIng = new ScrollPane();
         spIng.setLayoutX(130);
@@ -127,50 +96,9 @@ public class RecipePage{
         root.getChildren().addAll(spIng);
         root.getChildren().addAll(spPrep);
         
-        
-        likebtn.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				if ((rm.reviewRecipe(rc.title, rc.review))==true) {
-					 Alert alert = new Alert(AlertType.CONFIRMATION);
-						alert.setTitle("Success");
-						alert.setHeaderText("Success!");
-						alert.setContentText("Thanks for your opinion");
-						alert.showAndWait();
-						likebtn.setVisible(false);
-						reviewLabel.setText("You like it!");
-						
-				}
-			}
-		});
-        
-        root.getChildren().addAll(reviewLabel,likebtn);
         ingStage.setScene(scene);
         ingStage.show();
              
 	}
-    
 
-	public void saveRecipe(MouseEvent e) throws Exception {
-		
-		
-		if((upm.saveRecipe(rc.title, rc.preparation, rc.difficulty, rc.category, rc.time, rc.necessary, u.username))==true) {
-		
-			//upm.setUserProfile(up);
-			Alert alert = new Alert(AlertType.CONFIRMATION);
-			alert.setTitle("Success");
-			alert.setHeaderText("Success!");
-			alert.setContentText("Saved recipe successful");
-			alert.showAndWait();
-		}
-		else {
-			Alert alert = new Alert(AlertType.CONFIRMATION);
-			alert.setTitle("Information");
-			alert.setHeaderText("Information!");
-			alert.setContentText("Recipe already saved");
-			alert.showAndWait();
-		}
-	}
-
-	
-       
 }

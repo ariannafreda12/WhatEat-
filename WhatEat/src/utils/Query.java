@@ -23,8 +23,15 @@ public class Query {
 	public static String recipe1Query= "SELECT * FROM recipes WHERE title= '%s';";
 	
 	//query for save recipe
-	public static String saveQuery = "INSERT INTO recipeuser VALUES('%s', '%s', '%s','%s', '%s', '%s');";
+	public static String saveQuery = "INSERT INTO recipeuser VALUES('%s', '%s', '%s','%s', '%s', '%s', '%s');";
 	
 	//query for like recipe
 	public static String reviewQuery= "UPDATE recipes SET review = '%s' WHERE title = '%s';";
+	
+	//query for see user's recipe
+	public static String profileQuery= "SELECT * FROM recipeuser WHERE username= '%s';";
+	
+	//query for see user's notes
+	public static String notesQuery= "SELECT * FROM notes WHERE username= '%s';";
+	
 }

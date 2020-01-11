@@ -3,9 +3,11 @@ package view;
 import controller.GraphicController;
 import controller.LoginManager;
 import controller.RecipeManager;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -15,6 +17,9 @@ import model.Recipe;
 import javafx.scene.Node;
 
 public class MealPage {
+	
+	@FXML
+	public Button button;
 	
 	@FXML
 	public Text txtStarters;
@@ -74,6 +79,13 @@ public class MealPage {
 		((Node)(e.getSource())).getScene().getWindow().hide();
     	GraphicController graphicController = new GraphicController();
         graphicController.difficultPage();
+	}
+
+	public void openProfile(ActionEvent e) throws Exception {
+		
+		((Node)(e.getSource())).getScene().getWindow().hide();
+    	GraphicController graphicController = new GraphicController();
+        graphicController.profilePage();
 	}
 	
 	public void start() throws Exception {

@@ -36,7 +36,9 @@ public class Login {
 	    public TextField userField;
 		@FXML
 		public Text registrationText;
-			
+		
+		LoginManager lm= LoginManager.getInstance();
+		User uc = new User(null,null,null);
 		
 	    //login method
 	    public void LoginMethod(ActionEvent actionEvent) throws Exception {
@@ -54,10 +56,13 @@ public class Login {
 		            
 
 		            if (ub.validate()!= false) {
-		            
+		            	
+		            	uc.setUsername(user);
+			            lm.setUser(uc);
 		            	((Node)(actionEvent.getSource())).getScene().getWindow().hide();
 		            	GraphicController graphicController = new GraphicController();
 		                graphicController.mealPage();
+		              
 		            
 		             }
 		            

@@ -1,6 +1,8 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+
 import dao.RecipeDao;
 import dao.UserDao;
 import model.Recipe;
@@ -37,9 +39,7 @@ public class RecipeManager {
     public  Recipe chooseRecipe(String title) {
     	return RecipeDao.chooseRecipeDao(title);
     }
-    public boolean saveRecipe(String title, String preparation, String difficulty, String category, String time, String necessary) {
-    	return RecipeDao.saveRecipeDao(title, preparation, difficulty, category, time, necessary);
-    }
+   
     public boolean reviewRecipe(String title, int review) {
     	return RecipeDao.reviewRecipeDao(title, review);
     }
