@@ -1,8 +1,8 @@
 package view;
-
 import java.util.ArrayList;
 
 import bean.RecipeBean;
+import bean.UserBean;
 import controller.GraphicController;
 import controller.LoginManager;
 import controller.NotesManager;
@@ -12,7 +12,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -22,18 +21,22 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import model.Notes;
 import model.Recipe;
+import model.User;
 import model.UserProfile;
 
 public class ProfilePage {
+	
+	@FXML
+	public ImageView logOutimg;
 
 	@FXML
     private static ObservableList<UserProfile> list = FXCollections.observableArrayList();
@@ -54,6 +57,9 @@ public class ProfilePage {
 	Recipe rc=rm.getRecipe();
 	RecipeBean rb= new RecipeBean();
 	
+	LoginManager lm =LoginManager.getInstance();
+	User u= lm.getUser();
+	String mail= u.getEmail();
 	
 
 	public void start() throws Exception {
@@ -68,15 +74,15 @@ public class ProfilePage {
         
         //create new label for insert user
         final Label userLabel = new Label();
-        userLabel.setText(LoginManager.getInstance().getUser().getUsername());
-        userLabel.setLayoutY(90);
+        userLabel.setText(u.getUsername());
+        userLabel.setLayoutY(93);
         userLabel.setLayoutX(323);
         userLabel.setFont(Font.font("System", FontPosture.ITALIC, 22));
         
         //create new label for mail
         final Label mailLabel = new Label();
-        mailLabel.setText(LoginManager.getInstance().getUser().getEmail());
-        mailLabel.setLayoutY(90);
+        mailLabel.setText(mail);
+        mailLabel.setLayoutY(93);
         mailLabel.setLayoutX(550);
         mailLabel.setFont(Font.font("System", FontPosture.ITALIC, 22));
         
@@ -86,17 +92,13 @@ public class ProfilePage {
         column2.setCellValueFactory(new PropertyValueFactory<>("note"));      
         tableView2.getColumns().add(column2);
         VBox vibox = new VBox(tableView2);
-        ScrollPane spIng = new ScrollPane(vibox);
-        spIng.setLayoutX(182);
-        spIng.setLayoutY(260);
-        spIng.setPrefSize(246, 280);
-        spIng.setHbarPolicy(ScrollBarPolicy.NEVER);
-        spIng.setVbarPolicy(ScrollBarPolicy.ALWAYS);
+        ScrollPane spNote = new ScrollPane(vibox);
+        spNote.setLayoutX(182);
+        spNote.setLayoutY(260);
+        spNote.setPrefSize(246, 280);
+        spNote.setHbarPolicy(ScrollBarPolicy.NEVER);
+        spNote.setVbarPolicy(ScrollBarPolicy.ALWAYS);
        
-              
-        
-       
-
         TableView<UserProfile> tableView = new TableView();
         tableView.setPrefWidth(300);
         TableColumn<UserProfile,String> column1 = new TableColumn<UserProfile,String> ("Title");
@@ -113,7 +115,7 @@ public class ProfilePage {
         
         root.getChildren().addAll(userLabel);
         root.getChildren().addAll(mailLabel);
-        root.getChildren().addAll(spIng);
+        root.getChildren().addAll(spNote);
         root.getChildren().addAll(spRec);
         ingStage.setScene(scene);
         ingStage.show();
@@ -122,11 +124,12 @@ public class ProfilePage {
 		if (userprofile!= null) {
 		//cycle for found recipes
 			for(UserProfile s : userprofile) {
-				
+				list.clear();
 				//add title to the list
 				list.add(new UserProfile (s.getTitle())); 
 				tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 				tableView.setItems(list);
+				
 			}
       
 		tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
@@ -157,6 +160,7 @@ public class ProfilePage {
 			if (notes!= null) {
 			//cycle for found recipes
 				for(Notes n : notes) {
+					notesList.clear();
 					
 					//add title to the list
 					notesList.add(new Notes (n.getNote())); 

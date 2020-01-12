@@ -8,9 +8,9 @@ import model.User;
 
 public class LoginManager {
 	private static LoginManager instance = null;         //singleton
-	private User user;//singleton
-	
-    private LoginManager() {}
+	private User user;
+
+    public LoginManager() {}
 
     public static LoginManager getInstance() {
 
@@ -19,6 +19,7 @@ public class LoginManager {
         }
         return instance;
     }
+    
     public User getUser() {
         return user;
      }
@@ -27,7 +28,7 @@ public class LoginManager {
         user = u;
     }
 
-    public static User login(String nickname, String password) {
+    public User login(String nickname, String password) {
 
         UserDao ud = new UserDao();
         User data = null;
@@ -36,5 +37,20 @@ public class LoginManager {
         return data;
     }
     
-  
+    public static boolean register(String username, String password, String email) {
+    	return UserDao.registrationDao(username, password, email);
+    }
+
+    public  User foundUser(String username) {
+    	return UserDao.foundUserDao(username);
+    }
+
+    public  boolean changePassword(String username, String password) {
+    	return UserDao.changePassword(username,password);
+ 
+    }
+    public void resetUser() {
+        LoginManager.getInstance().getUser().reset();
+    }
+
 }

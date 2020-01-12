@@ -1,27 +1,31 @@
 package view;
 
-
-
+import bean.RecipeBean;
+import controller.GraphicController;
 import controller.LoginManager;
 import controller.RecipeManager;
 import controller.UserProfileManager;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ScrollPane.ScrollBarPolicy;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+
 import javafx.stage.Stage;
 import model.Recipe;
 import model.User;
@@ -30,20 +34,25 @@ import model.UserProfile;
 
 public class RecipePage{
 	
-	 
-	public Button likebtn = new Button();
+	@FXML
+	public ImageView profileImg;
+	@FXML
+	public ImageView logOutimg;
+	@FXML
+	public ImageView note;
 	
-	public Label reviewLabel = new Label();
-	
-	LoginManager lm = LoginManager.getInstance();
-	User u = lm.getUser();
 	
 	RecipeManager rm= RecipeManager.getInstance();
 	Recipe rc=rm.getRecipe();
-	
+	RecipeBean rb= new RecipeBean();
+	LoginManager lm = LoginManager.getInstance();
+	User u = lm.getUser();
 	UserProfileManager upm= UserProfileManager.getInstance();
 	UserProfile up=upm.getUserProfile();
 	
+	
+	public Label reviewLabel = new Label();
+	public Button likebtn = new Button();	 
 
 	public void start() throws Exception {
 			
@@ -62,72 +71,56 @@ public class RecipePage{
         titleLabel.setLayoutX(53);
         titleLabel.setPrefWidth(726);
         titleLabel.setAlignment(Pos.CENTER);
-        titleLabel.setFont(Font.font("System",FontWeight.BOLD, FontPosture.ITALIC, 36));
+        titleLabel.setFont(Font.font("System",FontWeight.BOLD, FontPosture.ITALIC, 32));
         
-        reviewLabel.setText("Leave review");
-    	reviewLabel.setLayoutY(551);
-    	reviewLabel.setLayoutX(445);
-    	reviewLabel.setFont(Font.font("System", FontWeight.BOLD, FontPosture.ITALIC, 23));
-        
-    	likebtn.setText("Like");
-    	likebtn.setLayoutX(607);
-    	likebtn.setLayoutY(555);
         //create new label for insert difficulty level
         final Label diffLabel = new Label();
         diffLabel.setText(rc.getDifficulty());
         diffLabel.setLayoutY(150);
         diffLabel.setLayoutX(298);
-        diffLabel.setFont(Font.font("System", FontPosture.ITALIC, 22));
+        diffLabel.setFont(Font.font("System", FontPosture.ITALIC, 20));
         
         //create new label for insert time
         final Label timeLabel = new Label();
         timeLabel.setText(rc.getTime());
         timeLabel.setLayoutY(150);
         timeLabel.setLayoutX(496);
-        timeLabel.setFont(Font.font("System", FontPosture.ITALIC, 22));
+        timeLabel.setFont(Font.font("System", FontPosture.ITALIC, 20));
         
         //create new label for insert category
         final Label catLabel = new Label();
         catLabel.setText(rc.getCategory());
         catLabel.setLayoutY(150);
         catLabel.setLayoutX(637);
-        catLabel.setFont(Font.font("System", FontPosture.ITALIC, 22));
+        catLabel.setFont(Font.font("System", FontPosture.ITALIC, 20));
         
         
-        
-       
-        
-        ScrollPane spIng = new ScrollPane();
-        spIng.setLayoutX(130);
-        spIng.setLayoutY(244);
-        spIng.setPrefSize(282, 256);
-        spIng.setHbarPolicy(ScrollBarPolicy.NEVER);
-        spIng.setVbarPolicy(ScrollBarPolicy.ALWAYS);
-        Label necLabel = new Label(rc.getNecessary());
-        spIng.setContent(necLabel);
+        TextArea necLabel = new TextArea(rc.getNecessary());
+        necLabel.setWrapText(true);
         necLabel.setFont(Font.font("System", FontPosture.ITALIC, 18));
-              
-        
-        ScrollPane spPrep = new ScrollPane();
-        spPrep.setLayoutX(445);
-        spPrep.setLayoutY(244);
-        spPrep.setPrefSize(320, 256);
-        spPrep.setHbarPolicy(ScrollBarPolicy.NEVER);
-        spPrep.setVbarPolicy(ScrollBarPolicy.ALWAYS);
-        Label prepLabel = new Label(rc.getPreparation());
-        spPrep.setContent(prepLabel);
+        necLabel.setLayoutX(130);
+        necLabel.setLayoutY(244);
+        necLabel.setPrefSize(282, 256);
+     
+        TextArea prepLabel = new TextArea(rc.getPreparation());
+        prepLabel.setLayoutX(445);
+        prepLabel.setLayoutY(244);
+        prepLabel.setPrefSize(320, 256);
+        prepLabel.setWrapText(true);
         prepLabel.setFont(Font.font("System", FontPosture.ITALIC, 18));
         
-        
-        root.getChildren().addAll(titleLabel);
-        root.getChildren().addAll(catLabel);
-        root.getChildren().addAll(diffLabel);
-        root.getChildren().addAll(timeLabel);
-        root.getChildren().addAll(spIng);
-        root.getChildren().addAll(spPrep);
-        
-        
-        likebtn.setOnAction(new EventHandler<ActionEvent>() {
+        reviewLabel.setText("Leave review");
+    	reviewLabel.setFont(Font.font("System", FontWeight.BOLD, FontPosture.ITALIC, 20));
+    	reviewLabel.setLayoutX(533);
+    	reviewLabel.setLayoutY(511);
+    	
+    	
+    	likebtn.setText("Like");
+    	likebtn.setLayoutX(665);
+    	likebtn.setLayoutY(505);
+    	likebtn.setFont(Font.font("System", FontWeight.BOLD, FontPosture.ITALIC,18));
+    	
+    	likebtn.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				if ((rm.reviewRecipe(rc.title, rc.review))==true) {
 					 Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -143,18 +136,40 @@ public class RecipePage{
 		});
         
         root.getChildren().addAll(reviewLabel,likebtn);
+        root.getChildren().addAll(titleLabel);
+        root.getChildren().addAll(catLabel);
+        root.getChildren().addAll(diffLabel);
+        root.getChildren().addAll(timeLabel);
+        root.getChildren().addAll(necLabel);
+        root.getChildren().addAll(prepLabel);
         ingStage.setScene(scene);
         ingStage.show();
              
 	}
+	
+	public void createNote(MouseEvent e) throws Exception {
+    	GraphicController graphicController = new GraphicController();
+        graphicController.notePage();
+	}
+	
+	
+	public void myProfile(MouseEvent me) throws Exception {
+    	GraphicController graphicController = new GraphicController();
+        graphicController.profilePage();
+	}
+	
+	public void logOut(MouseEvent me) throws Exception {
+		LoginManager controller = new LoginManager();
+        controller.resetUser();
+        ((Node)(me.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        Stage stage = null;
+        graphicController.start(stage);
+	}
     
-
 	public void saveRecipe(MouseEvent e) throws Exception {
-		
-		
 		if((upm.saveRecipe(rc.title, rc.preparation, rc.difficulty, rc.category, rc.time, rc.necessary, u.username))==true) {
 		
-			//upm.setUserProfile(up);
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Success");
 			alert.setHeaderText("Success!");
@@ -169,7 +184,8 @@ public class RecipePage{
 			alert.showAndWait();
 		}
 	}
-
 	
+	
+   
        
 }

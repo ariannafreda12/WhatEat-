@@ -1,8 +1,8 @@
 package view;
 
 import bean.UserBean;
-import controller.DBManager;
 import controller.GraphicController;
+import controller.LoginManager;
 import exception.EmptyFieldexception;
 import exception.FieldsNotMatchingException;
 import exception.UsernameNotFoundException;
@@ -32,7 +32,7 @@ public class ChangePasswordPage {
 	
 	public void changePassword(ActionEvent actionEvent) throws Exception{
 		
-		DBManager dbm = DBManager.getInstance();
+		LoginManager dbm = LoginManager.getInstance();
 		boolean pChanged;
 		try {
 			if ((tx0.getText().isEmpty()) ||(tx1.getText().isEmpty()) || (tx2.getText().isEmpty())) {

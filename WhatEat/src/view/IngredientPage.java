@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import bean.RecipeBean;
 import controller.GraphicController;
+import controller.LoginManager;
 import controller.RecipeManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,13 +14,22 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Recipe;
 
 public class IngredientPage {
 	
-	
+	@FXML
+	public ImageView profileImg;
+	@FXML
+	public ImageView logOutimg;
+	@FXML
+	public ImageView note;
+	@FXML
+	public Button backButton;
 	@FXML
 	public CheckBox butter;
 	@FXML
@@ -255,7 +265,7 @@ public class IngredientPage {
 	ArrayList<String> choiceList = new ArrayList<String>();
 	RecipeManager rm= RecipeManager.getInstance();
 	Recipe rc=rm.getRecipe();
-	
+
 	
 	public void start() throws Exception {
 		Stage ingStage = new Stage();
@@ -268,8 +278,6 @@ public class IngredientPage {
         ingStage.setScene(scene);
         ingStage.show();
 	}
-	
-	
 	
 	public void selectButter() {
 		if (butter.isSelected()) {
@@ -1184,7 +1192,6 @@ public class IngredientPage {
 	     }
 	}
 	
-	
 	public void selectIngredients(ActionEvent e) throws Exception{
 		
 		System.out.println(choiceList);
@@ -1199,5 +1206,19 @@ public class IngredientPage {
 		((Node)(e.getSource())).getScene().getWindow().hide();
     	GraphicController graphicController = new GraphicController();
         graphicController.difficultPage();
+	}
+	
+	public void myProfile(MouseEvent me) throws Exception {
+    	GraphicController graphicController = new GraphicController();
+        graphicController.profilePage();
+	}
+	
+	public void logOut(MouseEvent me) throws Exception {
+		LoginManager controller = new LoginManager();
+        controller.resetUser();
+        ((Node)(me.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        Stage stage = null;
+        graphicController.start(stage);
 	}
 }

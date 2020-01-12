@@ -1,8 +1,9 @@
 package view;
 
 
-import controller.DBManager;
+
 import controller.GraphicController;
+import controller.LoginManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.User;
 
 public class Registration {
 	@FXML
@@ -30,6 +32,9 @@ public class Registration {
 	public PasswordField passwordField;
 	@FXML
 	public Text goToLogin1;
+	
+	LoginManager lm= LoginManager.getInstance();
+	User u = lm.getUser();
 	
 	
 	//Method to create a new account
@@ -55,7 +60,7 @@ public class Registration {
 			alert.setContentText("Username and password must be \nat least six characters");
 			alert.showAndWait();
         }
-            if (DBManager.register(username, password, email)){
+            if (LoginManager.register(username, password, email)){
                 GraphicController graphicController = new GraphicController();
                 ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
                 graphicController.start(null);

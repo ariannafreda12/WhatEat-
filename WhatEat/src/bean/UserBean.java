@@ -2,7 +2,8 @@ package bean;
 
 
 
-import controller.DBManager;
+
+import controller.LoginManager;
 import model.User;
 
 public class UserBean {
@@ -13,7 +14,7 @@ public class UserBean {
 		
 		public boolean validate() {
 			
-			DBManager controller = DBManager.getInstance();
+			LoginManager controller = LoginManager.getInstance();
 			synchronized(controller) {
 			User found = controller.login(this.username, this.password);
 				if(found != null) {
@@ -25,7 +26,7 @@ public class UserBean {
 		}
 		
 		public boolean foundUser() {
-			DBManager controller = DBManager.getInstance();
+			LoginManager controller = LoginManager.getInstance();
 			synchronized(controller) {
 			User found = controller.foundUser(this.username);
 				if(found != null) {

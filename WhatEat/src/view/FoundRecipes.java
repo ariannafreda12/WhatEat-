@@ -1,10 +1,12 @@
 package view;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import bean.RecipeBean;
 import controller.GraphicController;
+import controller.LoginManager;
 import controller.RecipeManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -20,42 +23,51 @@ import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import model.Recipe;
 
 public class FoundRecipes {
 	@FXML
 	public Button backButton;
+	@FXML
+	public ImageView profileImg;
+	@FXML
+	public ImageView logOutimg;
+	@FXML
+	public ImageView note;
 
 	@FXML
     private static ObservableList<Recipe> list = FXCollections.observableArrayList();
 	
 
-
+	ArrayList <Recipe> recipe;	
 	
 	//instance of recipe manager for get difficulty, category and ingredient list
     RecipeManager rm= RecipeManager.getInstance();
 	Recipe rc=rm.getRecipe();
 	
-	ArrayList <Recipe> recipe= new ArrayList<Recipe>();
-	
 	public ArrayList<Recipe> createList(ArrayList<Recipe> first){
 		
-		int j;
 		for(int l=0; l<first.size(); l++) {
-			for(j=1; j<first.size()-1; j++) {
+			for(int j=0; j<first.size(); j++) {
 				if(first.get(j)==first.get(l)){
 					first.remove(first.get(j));
-					
-					
 				}
 			}
-	
 		}
 		return first;
+	}
+	
+	public void createNote(MouseEvent e) throws Exception {
+    	GraphicController graphicController = new GraphicController();
+        graphicController.notePage();
 	}
 	
 	public void start() throws Exception {
@@ -102,7 +114,7 @@ public class FoundRecipes {
         
 		recipe=RecipeManager.foundIngredient(rc.ingredient,rc.category,rc.difficulty); 
 		if (recipe!= null) {
-		
+		//cycle for found recipes
 			
 			ArrayList <Recipe> secondList = createList(recipe);
 					
@@ -140,13 +152,25 @@ public class FoundRecipes {
             }
         }));
 	}
-	
-	
-	
+
 	public void back(ActionEvent e) throws Exception {
 		list.clear();
 		((Node)(e.getSource())).getScene().getWindow().hide();
     	GraphicController graphicController = new GraphicController();
         graphicController.ingredientPage();
+	}
+	
+	public void myProfile(MouseEvent me) throws Exception {
+    	GraphicController graphicController = new GraphicController();
+        graphicController.profilePage();
+	}
+	
+	public void logOut(MouseEvent me) throws Exception {
+		LoginManager controller = new LoginManager();
+        controller.resetUser();
+        ((Node)(me.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        Stage stage = null;
+        graphicController.start(stage);
 	}
 }

@@ -19,7 +19,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -46,30 +52,39 @@ public class NotePage {
 		
 		AnchorPane root = new AnchorPane();
 		Stage window = new Stage();
+		window.getIcons().add(new Image("img/icon.png"));
+		window.setTitle("WhatEat?!" );
+        window.setResizable(false);
+        BackgroundSize size = new BackgroundSize(400,400,true, true, true, false);
+        BackgroundImage myBI= new BackgroundImage(new Image("img/note.jpg"),BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,size );
+    
+         root.setBackground(new Background(myBI));
 		Scene scene = new Scene(root, 400, 400);
 		window.setScene(scene);	
 		root.setPrefSize(500, 500);
 		writeNoteLabel.setText("Write note");
-		writeNoteLabel.setLayoutY(30);
-		writeNoteLabel.setLayoutX(30);
-		writeNoteLabel.setFont(Font.font("System", FontWeight.BOLD, FontPosture.ITALIC, 23));
+		writeNoteLabel.setLayoutY(20);
+		writeNoteLabel.setLayoutX(120);
+		writeNoteLabel.setFont(Font.font("System", FontWeight.BOLD, FontPosture.ITALIC, 22));
 	        
 		saveNotebtn.setText("Save");
-		saveNotebtn.setLayoutX(350);
+		saveNotebtn.setLayoutX(300);
 		saveNotebtn.setLayoutY(350);
+		saveNotebtn.setFont(Font.font("System", FontWeight.BOLD, FontPosture.ITALIC, 18));
 		
 		TextArea txtNote = new TextArea ();
 		txtNote.setLayoutX(60);
-		txtNote.setLayoutY(60);
+		txtNote.setLayoutY(68);
 		txtNote.setPrefSize(246, 280);
+		txtNote.setFont(Font.font("System", FontPosture.ITALIC, 22));
         
         VBox vibox = new VBox(txtNote);
-        ScrollPane spIng = new ScrollPane(vibox);
-        spIng.setLayoutX(60);
-        spIng.setLayoutY(60);
-        spIng.setPrefSize(246, 280);
-        spIng.setHbarPolicy(ScrollBarPolicy.NEVER);
-        spIng.setVbarPolicy(ScrollBarPolicy.ALWAYS);
+        ScrollPane sp = new ScrollPane(vibox);
+        sp.setLayoutX(60);
+        sp.setLayoutY(60);
+        sp.setPrefSize(246, 280);
+        sp.setHbarPolicy(ScrollBarPolicy.NEVER);
+        sp.setVbarPolicy(ScrollBarPolicy.ALWAYS);
         
         saveNotebtn.setOnAction(new EventHandler<ActionEvent>() {
  			public void handle(ActionEvent event) {
@@ -86,7 +101,7 @@ public class NotePage {
  			}
  		});
        
-		root.getChildren().add(spIng);
+		root.getChildren().add(sp);
 		root.getChildren().addAll(writeNoteLabel,saveNotebtn);
 		window.setScene(scene);
 		window.show();

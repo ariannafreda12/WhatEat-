@@ -22,7 +22,6 @@ public class Recipe {
 		this.review=review;
 	}
 	
-	
 	public Recipe(int id_recipe, String title, String preparation, String difficulty, String category,  String time, String necessary,int review) {
 		
 		this.setId(id_recipe);

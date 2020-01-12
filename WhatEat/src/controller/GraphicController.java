@@ -14,7 +14,6 @@ import view.RecipePage;
 import view.Registration;
 import view.UserRecipePage;
 
-
 public class GraphicController extends Application {
 
 	@Override
@@ -23,10 +22,6 @@ public class GraphicController extends Application {
 		login.start(primaryStage);
 	}
 
-	public void mealPage()throws Exception {
-		MealPage mealPage = new MealPage();
-		mealPage.start();
-	}
 
 	public void registrationPage() throws Exception {
 		Registration regPage = new Registration();
@@ -50,21 +45,29 @@ public class GraphicController extends Application {
 
 	public void foundPage() throws Exception{
 		FoundRecipes frecPage= new FoundRecipes();
-		frecPage.start();	
+		frecPage.start();
+		
 	}
 
 	public void showRecipe() throws Exception {
 		RecipePage recPage= new RecipePage();
 		recPage.start();
-	}
-
-	public void profilePage() throws Exception{
-		ProfilePage profPage = new ProfilePage();
-		profPage.start();
 		
 	}
 
-	public void userRecipePage() throws Exception{
+	public void mealPage() throws Exception {
+		MealPage mealpage= new MealPage();
+		mealpage.start();
+		
+	}
+
+
+	public void profilePage() throws Exception {
+		ProfilePage profpage= new ProfilePage();
+		profpage.start();
+		
+	}
+public void userRecipePage() throws Exception{
 		UserRecipePage userRecPage = new UserRecipePage();
 		userRecPage.start();
 		
@@ -76,5 +79,4 @@ public class GraphicController extends Application {
 		notePage.start();
 		
 	}
-	
 }

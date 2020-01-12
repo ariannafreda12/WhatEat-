@@ -25,6 +25,8 @@ public boolean validateRec(String title) {
 		Recipe found = controller.chooseRecipe(title);
 			if(found != null) {
 				return true;
+				
+				
 			}
 			return false;
 		}

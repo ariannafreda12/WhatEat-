@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -21,7 +22,6 @@ public class UserRecipePage {
 	
 	LoginManager lm = LoginManager.getInstance();
 	User u = lm.getUser();
-	
 	RecipeManager rm= RecipeManager.getInstance();
 	Recipe rc=rm.getRecipe();
 
@@ -67,25 +67,18 @@ public class UserRecipePage {
         catLabel.setFont(Font.font("System", FontPosture.ITALIC, 22));
         
         
-        ScrollPane spIng = new ScrollPane();
-        spIng.setLayoutX(130);
-        spIng.setLayoutY(244);
-        spIng.setPrefSize(282, 256);
-        spIng.setHbarPolicy(ScrollBarPolicy.NEVER);
-        spIng.setVbarPolicy(ScrollBarPolicy.ALWAYS);
-        Label necLabel = new Label(rc.getNecessary());
-        spIng.setContent(necLabel);
+        TextArea necLabel = new TextArea(rc.getNecessary());
+        necLabel.setWrapText(true);
         necLabel.setFont(Font.font("System", FontPosture.ITALIC, 18));
-              
-        
-        ScrollPane spPrep = new ScrollPane();
-        spPrep.setLayoutX(445);
-        spPrep.setLayoutY(244);
-        spPrep.setPrefSize(320, 256);
-        spPrep.setHbarPolicy(ScrollBarPolicy.NEVER);
-        spPrep.setVbarPolicy(ScrollBarPolicy.ALWAYS);
-        Label prepLabel = new Label(rc.getPreparation());
-        spPrep.setContent(prepLabel);
+        necLabel.setLayoutX(130);
+        necLabel.setLayoutY(244);
+        necLabel.setPrefSize(282, 256);
+     
+        TextArea prepLabel = new TextArea(rc.getPreparation());
+        prepLabel.setLayoutX(445);
+        prepLabel.setLayoutY(244);
+        prepLabel.setPrefSize(320, 256);
+        prepLabel.setWrapText(true);
         prepLabel.setFont(Font.font("System", FontPosture.ITALIC, 18));
         
         
@@ -93,8 +86,8 @@ public class UserRecipePage {
         root.getChildren().addAll(catLabel);
         root.getChildren().addAll(diffLabel);
         root.getChildren().addAll(timeLabel);
-        root.getChildren().addAll(spIng);
-        root.getChildren().addAll(spPrep);
+        root.getChildren().addAll(necLabel);
+        root.getChildren().addAll(prepLabel);
         
         ingStage.setScene(scene);
         ingStage.show();

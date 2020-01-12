@@ -3,11 +3,10 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
-
 import model.Ingredient;
 import model.Recipe;
 import utils.Query;
@@ -20,11 +19,10 @@ public class RecipeDao {
 	private final static String DRIVER_CLASS_NAME = "org.postgresql.Driver";
 	private static Connection connection = null;
 	
-	 public static ArrayList<Recipe> ingredientsDao(ArrayList <String> ingredientList, String category,String difficulty) {
+	 public static ArrayList <Recipe> ingredientsDao(ArrayList <String> ingredientList, String category,String difficulty) {
 		 Statement stmt = null;
 		 Recipe r = null;
-		 ArrayList <Recipe> recipe = new ArrayList <Recipe> ();
-		
+		 ArrayList<Recipe> recipe= new ArrayList <Recipe>();
 		 int i;
 		 
 			try {
@@ -38,19 +36,12 @@ public class RecipeDao {
 					ResultSet rs = stmt.executeQuery(sql);
 					
 					while(rs.next()) {
-						
 						r = new Recipe(rs.getInt("id_recipe"),rs.getString("title"), rs.getString("preparation"),
-								rs.getString("difficulty"),  rs.getString("category"), rs.getString("time"), rs.getString("necessary"),rs.getInt("review"));
-								System.out.println(rs.getString("title"));
-								recipe.add(r);
-								
-								
+								 rs.getString("difficulty"),  rs.getString("category"), rs.getString("time"), rs.getString("necessary"),rs.getInt("review"));
+						System.out.println(rs.getString("title"));
+						recipe.add(r);
 					}
-					
-					
 				}
-				
-				
 			} catch(Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -75,14 +66,13 @@ public class RecipeDao {
 				stmt = connection.createStatement();
 					
 					String sql = String.format(Query.recipe1Query,title);
+					
 					System.out.println("query:\n"+sql);
 					ResultSet rs = stmt.executeQuery(sql);
 					
 					if(rs.next()) {
 						r = new Recipe(rs.getInt("id_recipe"),title, rs.getString("preparation"),
 								 rs.getString("difficulty"),  rs.getString("category"), rs.getString("time"),rs.getString("necessary"),rs.getInt("review"));
-						 
-						 
 					}
 				
 			} catch(Exception e) {
@@ -100,7 +90,6 @@ public class RecipeDao {
 			return r;		 
 	 }
 	 
-	
 	 public static boolean reviewRecipeDao(String title, int review) {
 		  Statement stmt = null;
 	      Connection conn = null;
