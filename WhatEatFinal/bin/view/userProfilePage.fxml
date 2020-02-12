@@ -31,7 +31,7 @@
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Text>
-      <Label layoutX="14.0" layoutY="46.0" prefHeight="30.0" prefWidth="563.0" text="&gt; Meal &gt; Difficulty &gt; Ingredients &gt; Found Recipes &gt; Recipe" textFill="#171616be">
+      <Label layoutX="14.0" layoutY="46.0" prefHeight="30.0" prefWidth="563.0" text="&gt;Profile  &gt; Your recipe" textFill="#171616be">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>

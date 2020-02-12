@@ -43,14 +43,18 @@ public class FoundRecipes {
 	public Button backButton;
 	@FXML
 	public ImageView profileImg;
-	@FXML
+	@FXML 
 	public ImageView note;
+	@FXML
+	public ImageView home;
 
 	@FXML
     private static ObservableList<Recipe> list = FXCollections.observableArrayList();
 	
+	Recipe rc = new Recipe(null,null,null,null,null,null,0); 
 
 	 Set<Recipe> recipe;	
+	 
 	GraphicController gc = new GraphicController();
 	
 	//instance of recipe manager for get difficulty, category and ingredient list
@@ -58,9 +62,6 @@ public class FoundRecipes {
 	RecipeBean rb=rm.getRecipe();
 	
 	static Logger logger = Logger.getAnonymousLogger();
-	
-	Recipe rc = new Recipe(null,null,null,null,null,null,0); 
-	
 	private static final String CONTEXT = "context";
 	
 	LoginManager lm =LoginManager.getInstance();
@@ -91,6 +92,11 @@ public class FoundRecipes {
 	public void myProfile(){
     	GraphicController graphicController = new GraphicController();
         graphicController.profilePage();
+	}
+	
+	public void goHomeFr()  {
+    	GraphicController graphicController = new GraphicController();
+        graphicController.homePage();
 	}
 	
 	private void newUser(){
@@ -272,12 +278,11 @@ public class FoundRecipes {
 			tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
 	            
 	          
-	            try {  	
+	            try {  	 
 	            	
-	           	            
 	            	rc= rm.chooseRecipe(tableView.getSelectionModel().getSelectedCells().get(0).getTableColumn().getCellObservableValue(tableView.getSelectionModel().getSelectedCells().get(0).getRow()).getValue().toString());
 	            	
-	            	if(rb.validateRec(tableView.getSelectionModel().getSelectedCells().get(0).getTableColumn().getCellObservableValue(tableView.getSelectionModel().getSelectedCells().get(0).getRow()).getValue().toString())) { 
+	            	if(rc!=null) { 
 	              		rb.setRecBeanTitle(rc.getTitle());
 	              		rb.setRecBeanPreparation(rc.getPreparation());
 	              		rb.setRecBeanNecessary(rc.getNecessary());
@@ -285,14 +290,13 @@ public class FoundRecipes {
 	              		rb.setRecBeanReview(rc.getReview());
 	            		rm.setRecipe(rb);
 	            		gc.showRecipe();
-	            	}
-	            	
+	            	}	            	
 	            } catch (Exception e) {
 	                e.printStackTrace();
 	            }
 	        }));
 		} catch (IOException e1) {
-			logger.log(null, CONTEXT,e1);
+			e1.printStackTrace();
 		}
 		
 	}

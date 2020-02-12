@@ -42,6 +42,8 @@ public class ProfilePage {
 	public ImageView logOutimg;
 	@FXML
 	public ImageView note;
+	@FXML
+	public ImageView home;
 	
 	@FXML
     private static ObservableList<UserProfile> list = FXCollections.observableArrayList();
@@ -50,9 +52,12 @@ public class ProfilePage {
     private static ObservableList<Notes> notesList = FXCollections.observableArrayList();
 	
 
-	Set<UserProfile> userprofile;
+	Set<UserProfile> userprofile; 
 	Set<Notes> notes = new HashSet<>();
 	
+	UserProfile up = new UserProfile(null);
+	Notes nc = new Notes(null,null);
+	 
 	GraphicController gc = new GraphicController();
 	
 	static Logger logger = Logger.getAnonymousLogger();
@@ -79,12 +84,32 @@ public class ProfilePage {
     	GraphicController graphicController = new GraphicController();
         graphicController.notePage();
 	}
+	
+	public void goHomeProfile()  {
+    	GraphicController graphicController = new GraphicController();
+        graphicController.homePage();
+	}
 
+	public void logOut(MouseEvent me){
+		LoginManager controller = new LoginManager();
+        controller.resetUser();
+        ((Node)(me.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        Stage stage = null;
+        try {
+			graphicController.start(stage);
+		} catch (Exception e) {
+			logger.log(null, CONTEXT,e);
+		}
+	}
+	
 
 	public void closeProfilePage(MouseEvent event)  {
 		((Node)(event.getSource())).getScene().getWindow().hide();
     
 	}
+
+	
 	public void start() {
 			
 		Stage ingStage = new Stage();
@@ -158,7 +183,6 @@ public class ProfilePage {
 	      
 			tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
 			try { 
-					UserProfile up = new UserProfile(null);
 	                up = upm.chooseUserRecipe(tableView.getSelectionModel().getSelectedCells().get(0).getTableColumn().getCellObservableValue(tableView.getSelectionModel().getSelectedCells().get(0).getRow()).getValue().toString());
 	            	
 	            	if(up!=null) { 
@@ -196,7 +220,7 @@ public class ProfilePage {
 			
 			tableView2.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {	          
 	            try { 
-	            	Notes nc = new Notes(null,null);
+	            	
 	            	nc = nm.chooseNote(tableView2.getSelectionModel().getSelectedCells().get(0).getTableColumn().getCellObservableValue(tableView2.getSelectionModel().getSelectedCells().get(0).getRow()).getValue().toString());
 	            	
 					if(nb.validateNote(tableView2.getSelectionModel().getSelectedCells().get(0).getTableColumn().getCellObservableValue(tableView2.getSelectionModel().getSelectedCells().get(0).getRow()).getValue().toString())) { 
@@ -217,11 +241,6 @@ public class ProfilePage {
 			
 			logger.log(null, CONTEXT,e1);
 		}
-		
-    
-        
-       
-		
 		  	
 	}
 }

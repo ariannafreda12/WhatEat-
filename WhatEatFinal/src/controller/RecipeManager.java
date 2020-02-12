@@ -40,11 +40,8 @@ public class RecipeManager {
     public static Recipe dailyRecipe() {
     	return RecipeDao.dailyRecipeDao();
     }
-    
-
-    
-    
-    public static Recipe chooseRecipe(String title) {
+ 
+    public Recipe chooseRecipe(String title) {
     	return RecipeDao.chooseRecipeDao(title);
     }
 
@@ -53,7 +50,7 @@ public class RecipeManager {
 	}
 	
 	public boolean addReviewRecipe(String username, String title) {
-		return RecipeDao.addReviewDao(username, title);
+		return RecipeDao.addReviewDao(username, title); 
 	}
 	public boolean checkReviewRecipe(String username, String title) {
 		return RecipeDao.checkReviewDao(username, title);

@@ -56,7 +56,7 @@ public class UserRecipePage {
 	public void start() {
 		
 		Stage ingStage = new Stage();
-		FXMLLoader loader = new FXMLLoader (RecipePage.class.getResource("userProfilePage.fxml"));
+		FXMLLoader loader = new FXMLLoader (UserRecipePage.class.getResource("userProfilePage.fxml"));
 		AnchorPane rootUserRecipe;
 		try {
 			rootUserRecipe = loader.load();

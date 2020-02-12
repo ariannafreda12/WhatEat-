@@ -3,8 +3,7 @@ package bean;
 import java.util.HashSet;
 import java.util.Set;
 
-import controller.RecipeManager;
-import model.Recipe;
+
 
 public class RecipeBean {
     
@@ -19,26 +18,7 @@ public class RecipeBean {
 	private String necessary;
 	private int review;
 
-		
-	
-public boolean validateRec(String title) {
-	
-		boolean checked=false;
-		
-		RecipeManager controller = RecipeManager.getInstance();
-		synchronized(controller) {
-		
-		Recipe found = RecipeManager.chooseRecipe(title);
-			if(found != null) {
-				checked=true;
-				
-				
-			}
-		
-			
-		}
-		return checked;
-	}
+
 	
 	public int getRecBeanId() {
 		return idRec;

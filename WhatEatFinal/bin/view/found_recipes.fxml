@@ -16,7 +16,7 @@
             <Image url="@../img/WhatsApp%20Image%202019-12-20%20at%2014.33.07.jpeg" />
          </image>
       </ImageView>
-      <Text fx:id="homeText" layoutX="190.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" underline="true">
+      <Text fx:id="homeText" layoutX="190.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
@@ -48,5 +48,13 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
+      <ImageView fx:id="home" fitHeight="38.0" fitWidth="38.0" layoutX="536.0" onMouseClicked="#goHomeFr">
+         <image>
+            <Image url="@../img/homeIcon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </AnchorPane>

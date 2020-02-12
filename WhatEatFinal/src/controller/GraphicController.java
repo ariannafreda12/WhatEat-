@@ -88,9 +88,9 @@ public class GraphicController extends Application {
 	public void showRecipe(){
 		RecipePage recPage= new RecipePage();
 		try {
-			recPage.startRecPage();
+			recPage.start();
 		} catch (Exception e) {
-			logger.log(null,CONTEXT,e);
+			e.printStackTrace();
 		}
 		
 	}
@@ -100,7 +100,6 @@ public class GraphicController extends Application {
 		try {
 			mealpage.start();
 		} catch (Exception e) {
-		
 			logger.log(null, CONTEXT,e);
 		}
 		
@@ -123,7 +122,7 @@ public class GraphicController extends Application {
 		try {
 			userRecPage.start();
 		} catch (Exception e) {
-			logger.log(null, CONTEXT,e);
+			logger.log(null, CONTEXT,e); 
 		}
 		
 	}

@@ -112,6 +112,14 @@ public class Registration {
 			alert.setContentText("Enter username, password and/or email.");
 			alert.showAndWait();
         }
+        ub.setUsername(username);
+        if (ub.foundUser()) {
+        	Alert alertU = new Alert(AlertType.WARNING);
+			alertU.setTitle(WARNING);
+			alertU.setHeaderText(ATTENTION);
+			alertU.setContentText("Username already exists");
+			alertU.showAndWait();
+      }
         
         if (username.length()>=6 && password.length()>=6){
         	if(resultM) {

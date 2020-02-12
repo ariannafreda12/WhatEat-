@@ -2,7 +2,6 @@ package view;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import bean.RecipeBean;
@@ -57,7 +56,7 @@ public class RecipePage{
 	private static final String SYSTEM = "System";
 	
 	Stage ingStage = new Stage();
-	FXMLLoader loader = new FXMLLoader (RecipePage.class.getResource("recipePage.fxml"));
+	FXMLLoader loader = new FXMLLoader(RecipePage.class.getResource("recipePage.fxml"));
 	AnchorPane root;
 	
 	public void myProfile(){
@@ -105,25 +104,6 @@ public class RecipePage{
 	}
 		return check; 
 }
-	
-	public ImageView inputProfileR(FileInputStream inR) {
-		 Image imageP = new Image(inR);
-	     ImageView userR = new ImageView(imageP);
-	     userR.setFitHeight(30);
-	     userR.setFitWidth(34);
-	     userR.setLayoutX(712);
-	     userR.setLayoutY(7);
-	     userR.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-	            try {
-					myProfile();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-	        });
-	     return userR;
-		
-	}
-	
 	public ImageView inputNoteR(FileInputStream inpNR) {
 		 Image imageN = new Image(inpNR);
 	     ImageView noteVR = new ImageView(imageN);
@@ -140,24 +120,9 @@ public class RecipePage{
 	        });
 	     return noteVR;
 	}
-	public ImageView inputLogOutR(FileInputStream inpLR) {
-		 Image imageL = new Image(inpLR);
-	     ImageView logoutR = new ImageView(imageL);
-	     logoutR.setFitHeight(30);
-	     logoutR.setFitWidth(28);
-	     logoutR.setLayoutX(758);
-	     logoutR.setLayoutY(7);
-	     logoutR.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-	            try {
-	            	logOutRecipePagde(event);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-	        });
-	     return logoutR;
-	}
+	
 
-	public void startRecPage() {
+	public void start() {
 			
 	
 		try {
@@ -172,20 +137,14 @@ public class RecipePage{
 	        hi.setLayoutY(10);
 	        hi.setLayoutX(600);
 	        hi.setFont(Font.font(SYSTEM, FontPosture.ITALIC, 18));
-	        
-	        FileInputStream inputP = new FileInputStream("src\\img\\icons8-nome-100.png");
-	        ImageView userViewRecipePage = inputProfileR(inputP);
+	  
 	       
 	        FileInputStream inputN = new FileInputStream("src\\img\\icons8-libretto-a-spirale-legato-80.png");
 	        ImageView noteViewRecipePage = inputNoteR(inputN);
 	       
-	        
-	        FileInputStream inputL = new FileInputStream("src\\img\\icons8-uscita-100.png");
-	        ImageView logoutViewRecipePage =inputLogOutR(inputL);
 	                
 	        if (lm.getUser().getUsername()=="Chef"){
 				noteViewRecipePage.setVisible(false);
-				userViewRecipePage.setVisible(false);
 				FileInputStream inputR = new FileInputStream("src\\img\\icons8-nome-100.png");
 		        Image imageR = new Image(inputR);
 		        ImageView rViewRecipePage = new ImageView(imageR);
@@ -204,7 +163,7 @@ public class RecipePage{
 		        
 	        }
 	        
-	        root.getChildren().addAll(hi, noteViewRecipePage, userViewRecipePage, logoutViewRecipePage);
+	        root.getChildren().addAll(hi, noteViewRecipePage);
 	        
 	        //create new label for insert title
 	        final Label titleLabel = new Label();
@@ -262,37 +221,29 @@ public class RecipePage{
 	    	likebtn.setLayoutX(665);
 	    	likebtn.setLayoutY(505);
 	    	likebtn.setFont(Font.font(SYSTEM, FontWeight.BOLD, FontPosture.ITALIC,18));
-	    	likebtn.setOnAction(new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent event) {
-					
-						boolean checkRev=reviewStudy(rb.getRecBeanTitle(),ub.getUsername(),rb.getRecBeanReview());
-						 if(checkRev) {
-							 likebtn.setVisible(false);
-							 reviewLabel.setText("You like it!");
-							 
-						 }
-							
-							
-					
-					
-				try {
-					event.wait(0);
-				} catch (InterruptedException e) {
-					logger.log(Level.WARNING, "Interrupted!", e);
-				    Thread.currentThread().interrupt();
-				  }
-					}
-				}
-			);
 	    	
 	    	if ((rm.checkReviewRecipe(ub.getUsername(), rb.getRecBeanTitle()))) {
 				likebtn.setVisible(false);
 				reviewLabel.setText("You like it!");		
 			}
 	    	
+	    	likebtn.setOnAction(new EventHandler<ActionEvent>() {
+			
+	    	public void handle(ActionEvent event) {
+				boolean checkRev=reviewStudy(rb.getRecBeanTitle(),ub.getUsername(),rb.getRecBeanReview());
+						 if(checkRev) {
+							 likebtn.setVisible(false); 
+							 reviewLabel.setText("You like it!");
+							 
+						 }
+						
+				}}
+			);
+	    	
+	    
+	    	
 	    	if (lm.getUser().getUsername()=="Chef"){
 				noteViewRecipePage.setVisible(false);
-				userViewRecipePage.setVisible(false);
 				likebtn.setVisible(false);
 				reviewLabel.setVisible(false);
 	        }
@@ -302,7 +253,7 @@ public class RecipePage{
 	        ingStage.setScene(scene);
 	        ingStage.show();
 		} catch (IOException e1) {
-			logger.log(null, CONTEXT,e1);
+			e1.printStackTrace();
 		}
 	}
 		

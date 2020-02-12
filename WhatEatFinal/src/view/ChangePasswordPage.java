@@ -3,9 +3,11 @@ package view;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import bean.RecipeBean;
 import bean.UserBean;
 import controller.GraphicController;
 import controller.LoginManager;
+import controller.RecipeManager;
 import exception.EmptyFieldexception;
 import exception.FieldsNotMatchingException;
 import javafx.event.ActionEvent;
@@ -33,10 +35,11 @@ public class ChangePasswordPage {
 	private PasswordField tx2;
 	
 	private static final String ATTENTION = "Attention!";
-	
+	RecipeManager rm= RecipeManager.getInstance();
+	RecipeBean rb= rm.getRecipe();
 	static Logger logger = Logger.getAnonymousLogger();
 	 private static final String CONTEXT = "context";
-	 
+
 	public void closeCPassPage(ActionEvent actionEvent)  {
 		GraphicController graphicController = new GraphicController();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();

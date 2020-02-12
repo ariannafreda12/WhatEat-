@@ -72,7 +72,7 @@ public class HomePage {
 	 private static final String CONTEXT = "context";
 	 
 	 Stage ingStage = new Stage();
-	 FXMLLoader loader = new FXMLLoader (FoundRecipes.class.getResource("homePage.fxml"));
+	 FXMLLoader loader = new FXMLLoader (HomePage.class.getResource("homePage.fxml"));
 	 AnchorPane root;
 	 
 	 private Label titleLabel = new Label("Discover popular recipes:");
@@ -93,7 +93,7 @@ public class HomePage {
 
 	public void myProfile(){
 		GraphicController graphicController = new GraphicController();
-		graphicController.profilePage();
+		graphicController.profilePage(); 
 	}
 	
 	public void logOut(MouseEvent me){
@@ -379,7 +379,7 @@ public class HomePage {
 	              		gc.showRecipe();}}
 	           ));
 		} catch (IOException e1) {
-			logger.log(null, CONTEXT,e1);
+			e1.printStackTrace();
 		}
 		
 

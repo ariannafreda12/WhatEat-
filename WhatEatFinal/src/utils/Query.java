@@ -3,7 +3,7 @@ package utils;
 public class Query {
 	
 	  private Query() {
-		    throw new IllegalStateException("Utility class");
+		    throw new IllegalStateException("Utility class"); 
 		  }
 	
 	//query for login
