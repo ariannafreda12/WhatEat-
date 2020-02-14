@@ -100,7 +100,7 @@ font-family:montserrat
         <div class="u-clearfix u-sheet u-valign-top u-sheet-1">
             <img src="images/icon.png" alt="" class="u-image u-image-default u-image-1" data-image-width="980" data-image-height="981">
             <h2 class="u-custom-font u-font-Lobster u-text u-text-black u-text-default u-text-1">WhatEat?!</h2></div> 
-        <label class="hiButtonHome"><b><i><%out.println(" Hi " + ub.getUsername());%></i></b></label>
+        <label class="hiButtonHome"><%out.println(" Hi " + ub.getUsername());%></label>
         </div>
         
     </header>
@@ -185,12 +185,13 @@ font-family:montserrat
                                         	<div class="u-container-style u-group u-opacity u-opacity-40 u-palette-3-light-3 u-group-3">
                                             <div class="u-container-layout u-container-layout-6">
         									<table class="table">
+        									<th></th>
         									<h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-weight:bold; font-size:24px"><%out.println(daily.getTitle());%></h6>
-        									<h9 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px"><i><b>Category:</b></i>&nbsp;&nbsp;<%out.println(daily.getCategory());%></h9><br>
-        									<h9 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px"><i><b>Difficulty:</b></i>&nbsp;&nbsp;<%out.println(daily.getDifficulty());%></h9><br>
-        									<h9 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px"><i><b>Time:</b></i>&nbsp;&nbsp;<%out.println(daily.getTime());%></h9><br><br>
-        									<h9 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px"><i><b>Ingredients:</b></i>&nbsp;&nbsp;<br><%out.println(daily.getNecessary());%></h9><br><br>
-        									<h9 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px"><i><b>Preparation:</b></i>&nbsp;&nbsp;<br><%out.println(daily.getPreparation());%></h9>     
+        									<h9 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px">Category:&nbsp;&nbsp;<%out.println(daily.getCategory());%></h9><br>
+        									<h9 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px">Difficulty:&nbsp;&nbsp;<%out.println(daily.getDifficulty());%></h9><br>
+        									<h9 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px">Time:&nbsp;&nbsp;<%out.println(daily.getTime());%></h9><br><br>
+        									<h9 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px">Ingredients:&nbsp;&nbsp;<br><%out.println(daily.getNecessary());%></h9><br><br>
+        									<h9 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px">Preparation:&nbsp;&nbsp;<br><%out.println(daily.getPreparation());%></h9>     
        									 </table>   
        									 </div>
                                         </div>
@@ -203,12 +204,13 @@ font-family:montserrat
                                         	<div class="u-container-style u-group u-opacity u-opacity-40 u-palette-3-light-3 u-group-3">
                                             <div class="u-container-layout u-container-layout-6">
         									<table class="table">
+        									<th></th>
         	   								<h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-weight:bold; font-size:24px"><%out.println(fav.getTitle());%></a></h6>
-            								<h9 name="cat" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px" ><i><b>&nbsp;Category:</b></i>&nbsp;&nbsp;<%out.println(fav.getCategory());%></h9><br>
-            								<h9 name="diff" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px" ><i><b>&nbsp;Difficulty:</b></i>&nbsp;&nbsp;<%out.println(fav.getDifficulty());%></h9><br>
-            								<h9 name="time" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px" ><i><b>&nbsp;Time:</b></i>&nbsp;&nbsp;<%out.println(fav.getTime());%></h9><br><br>
-            								<h9 name="nec" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px" ><i><b>&nbsp;Ingredients:</b></i>&nbsp;&nbsp;<br><%out.println(fav.getNecessary());%></h9><br><br>
-            								<h9 name="prep" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px" ><i><b>&nbsp;Preparation:</b></i>&nbsp;&nbsp;<br><%out.println(fav.getPreparation());%></h9>   
+            								<h9 name="cat" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px" >&nbsp;Category:&nbsp;&nbsp;<%out.println(fav.getCategory());%></h9><br>
+            								<h9 name="diff" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px" >&nbsp;Difficulty:&nbsp;&nbsp;<%out.println(fav.getDifficulty());%></h9><br>
+            								<h9 name="time" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px" >&nbsp;Time:&nbsp;&nbsp;<%out.println(fav.getTime());%></h9><br><br>
+            								<h9 name="nec" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px" >&nbsp;Ingredients:&nbsp;&nbsp;<br><%out.println(fav.getNecessary());%></h9><br><br>
+            								<h9 name="prep" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" style="font-size:18px" >&nbsp;Preparation:&nbsp;&nbsp;<br><%out.println(fav.getPreparation());%></h9>   
            									</table>  
            									</div>
                                         </div>  <% 

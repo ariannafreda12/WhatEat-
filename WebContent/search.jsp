@@ -147,7 +147,7 @@ width:15%;
                     <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
                 </div>
             </nav>
-            <div><h1 class="u-text u-text-body-color u-title u-text-1">WhatEat?!</h1> <label class="hiButton"><b><i><%out.println(" Hi " + ub.getUsername());%></i></b></label><a href="homePage.jsp" class="home"><img src="images\homeIcon.png" width="40" height="35" style="right:20px; align:right"></a></div> 
+            <div><h1 class="u-text u-text-body-color u-title u-text-1">WhatEat?!</h1> <label class="hiButton"><%out.println(" Hi " + ub.getUsername());%></label><a href="homePage.jsp" class="home"><img src="images\homeIcon.png" width="40" height="35" style="right:20px; align:right"></a></div> 
         </div>
     </header>
     <form action="searchDB.jsp" method="post">
@@ -243,10 +243,10 @@ width:15%;
             <table class="table">
    	 
     <tr>
-         <th id="varius"><i>Varius</th>
-         <th id="sauces"><i>Sauces</th>
-         <th id="herbspices"><i>Herbspices</th>
-         <th id="snacks"><i>Snacks</th>
+         <th id="varius"><br>Varius</th>
+         <th id="sauces"><br>Sauces</th>
+         <th id="herbspices"><br>Herbspices</th>
+         <th id="snacks"><br>Snacks</th>
          
    	</tr>
     <%
@@ -276,9 +276,10 @@ width:15%;
 		<br>
 		</table><table class="table">
 		
-		  <th id="vegetables"><br><i>Vegetables</th>
-          <th id="fruit"><br><i>Fruit</th>
-          <th id="fish"><br><i>Fish</th>
+		
+		  <th id="vegetables"><br>Vegetables</th>
+          <th id="fruit"><br>Fruit</th>
+          <th id="fish"><br>Fish</th>
           <th id="meat"><br>Meat</th>
         </tr>
         

@@ -183,18 +183,19 @@
         <div class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-border-radius-32 u-container-style u-group u-opacity u-opacity-35 u-palette-3-light-3 u-shape-round u-group-1">
         <div class="u-container-layout u-container-layout-1">
         <table class="table">
+        <th></th>
         <label class="Titlelabel" style="font-weight:bold"><%out.println(rb.getRecBeanTitle());%></label>
-        <h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6"><i><b>Category:</b></i>&nbsp;&nbsp;<%out.println(rb.getRecBeanCategory());%></h6>
-        <h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6"><i><b>Difficulty:</b></i>&nbsp;&nbsp;<%out.println(rb.getRecBeanDifficulty());%></h6>
-        <h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6"><i><b>Time:</b></i>&nbsp;&nbsp;<%out.println(rb.getrecBeanTime());%></h6>
-        <h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6"><i><b>Ingredients:</b></i>&nbsp;&nbsp;<br><%out.println(rb.getRecBeanNecessary());%></h6>
-        <h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6"><i><b>Preparation:</b></i>&nbsp;&nbsp;<br><%out.println(rb.getRecBeanPreparation());%></h6>      
+        <h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6">Category:&nbsp;&nbsp;<%out.println(rb.getRecBeanCategory());%></h6>
+        <h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6">Difficulty:&nbsp;&nbsp;<%out.println(rb.getRecBeanDifficulty());%></h6>
+        <h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6">Time:&nbsp;&nbsp;<%out.println(rb.getrecBeanTime());%></h6>
+        <h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6">Ingredients:&nbsp;&nbsp;<br><%out.println(rb.getRecBeanNecessary());%></h6>
+        <h6 class="u-align-center u-custom-font u-font-montserrat u-text u-text-6">Preparation:&nbsp;&nbsp;<br><%out.println(rb.getRecBeanPreparation());%></h6>      
         </table></div></div>   
         <br> 
         <%
         if(ub.getUsername()!="Chef" &&  upm.checkChef(ub.getUsername(),rb.getRecBeanTitle())==null){
         %><form action="fav.jsp" method="post">
-        <u><i><b><input type="submit" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" 
+        <u><input type="submit" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" 
         name="fav" value="Add to favorites" style="background-color: #ffcc00; border-radius:6px; border:0px;cursor:pointer;
 	color:black; font-family:Montserrat; font-size:18px; font-style:italic; padding:6px 24px;text-decoration:none;">     
     	</form><br>
@@ -203,7 +204,7 @@
         
         if(ub.getUsername()!="Chef" &&  upm.checkChef(ub.getUsername(),rb.getRecBeanTitle())!=null){
         %><form action="favRemove.jsp" method="post">
-        <u><i><b><input type="submit" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" 
+        <u><input type="submit" class="u-align-center u-custom-font u-font-montserrat u-text u-text-6" 
         name="fav" value="Remove from favorites" style="background-color: #ffcc00; border-radius:6px; border:0px;cursor:pointer;
 	color:black; font-family:Montserrat; font-size:18px; font-style:italic; padding:6px 24px;text-decoration:none;">     
     	</form>
