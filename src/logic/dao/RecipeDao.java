@@ -302,8 +302,8 @@ public class RecipeDao {
 	                
 	            }
 
-		}catch(Exception eChooseRecipe) {
-			logger.log(null, CONTEXT,eChooseRecipe);
+		}catch(Exception eCheckRev) {
+			logger.log(null, CONTEXT,eCheckRev);
 		} finally {
 			try {
 				if(connectionRecipe != null)
@@ -312,12 +312,11 @@ public class RecipeDao {
 					statementRecipe.close();
 				if(rsRecipe != null)
 					rsRecipe.close();
-			} catch (SQLException eChooseRecipe) {
-				logger.log(null, CONTEXT,eChooseRecipe);
+			} catch (SQLException eCheckRev) {
+				logger.log(null, CONTEXT,eCheckRev);
 			}
 		}
 		return checkRev;
 	    }
 
 }
-
