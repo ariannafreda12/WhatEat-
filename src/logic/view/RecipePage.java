@@ -37,7 +37,6 @@ public class RecipePage{
 	
 	@FXML
 	public ImageView logOutimg;
-	
 	RecipeManager rm= RecipeManager.getInstance();
 	RecipeBean rb= rm.getRecipe();
 	
@@ -236,8 +235,9 @@ public class RecipePage{
 							 reviewLabel.setText("You like it!");
 							 
 						 }
+						 
 						
-				}}
+				event.notify();}}
 			);
 	    	
 	    

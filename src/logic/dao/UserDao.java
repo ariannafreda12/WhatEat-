@@ -12,12 +12,12 @@ import logic.util.Query;
 
 
 public class UserDao {
-
 	
-	public UserDao(String username, String password, String email) {
-		
-	}
-	 User u = null;
+	public UserDao() {
+		    throw new IllegalStateException("Utility class");
+		  }
+	
+	
 	 private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
 	 private static final String USER = "postgres";
 	 private static final String PASS = "postgres";
@@ -41,8 +41,8 @@ public class UserDao {
 	    }
 	
 	
-	  public  User loginDao(String username, String password) {
-		 
+	  public static User loginDao(String username, String password) {
+		  User u = null;
 			try {
 				demoU(DRIVER_CLASS_NAME);
 				connectionUser = DriverManager.getConnection(URL, USER, PASS);
