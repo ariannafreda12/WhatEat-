@@ -196,10 +196,10 @@ tr:hover {background-color:#f5f5f5;}
    <table class="table">
    	 
       <tr>
-         <th>Title</th>
-         <th>Necessary</th>
-         <th>Time</th>
-         <th>Review</th>
+         <th id="title">Title</th>
+         <th id="necessary">Necessary</th>
+         <th id="time">Time</th>
+         <th id="review">Review</th>
    
     <%
 	Set <Recipe> recipe= new HashSet<>();	
