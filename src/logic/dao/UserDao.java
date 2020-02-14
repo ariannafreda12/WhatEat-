@@ -13,7 +13,7 @@ import logic.util.Query;
 
 public class UserDao {
 	
-	public UserDao() {
+	private UserDao() {
 		    throw new IllegalStateException("Utility class");
 		  }
 	
