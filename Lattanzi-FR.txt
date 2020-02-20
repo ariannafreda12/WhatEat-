@@ -1,0 +1,7 @@
+FUNCTIONAL REQUIREMENTS
+
+The system shall display recipes ordered by preparing time or difficulty when the user requests it
+
+The System shall provide recipes with all, or at least one of the ingredients selected by the user
+
+The system shall save user's favourite recipes in the specific section

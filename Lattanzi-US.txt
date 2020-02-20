@@ -1,0 +1,7 @@
+USER STORIES
+
+As a user, I want to create an account so I can keep my information secure.
+
+As a user, I want to not which ingredients I have so I can prepare the recipe I need.
+
+As a registred user, I want to save my favourite recipes so I can prepare them whenever I want.
